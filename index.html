@@ -135,6 +135,13 @@ limitations under the License.
     // Update the UI to include the received message.
     appendMessage(payload);
     // [END_EXCLUDE]
+
+    var obj=JSON.parse(payload.data.notification);
+    var notification =new Notification(obj.title,{
+        icon: obj.icon,
+        body: obj.body
+    })
+
   });
   // [END receive_message]
   function resetUI() {
