@@ -21,7 +21,7 @@ messaging.setBackgroundMessageHandler (function (payload) {
     var notificationTitle = obj.title;
     var notificationOption = {
         body: obj.body,
-        icon: 'res/Login/logo_chanvietnam.png'
+        icon: obj.icon
     }
     return self.registration.showNotification(notificationTitle, notificationOption);
 });
