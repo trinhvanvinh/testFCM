@@ -72,6 +72,7 @@ limitations under the License.
 <!-- Import and configure the Firebase SDK -->
 <!-- These scripts are made available when the app is served or deployed on Firebase Hosting -->
 <!-- If you do not serve/host your project using Firebase Hosting see https://firebase.google.com/docs/web/setup -->
+<script src="https://www.gstatic.com/firebasejs/6.2.3/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-messaging.js"></script>
 
@@ -87,7 +88,7 @@ limitations under the License.
         authDomain: "betachanvn.firebaseapp.com",
         databaseURL: "https://betachanvn.firebaseio.com",
         projectId: "betachanvn",
-        storageBucket: "",
+        storageBucket: "https://testfcm.netlify.com",
         messagingSenderId: "735679930457",
         appId: "1:735679930457:web:87165cc71fc48bff"
     };
@@ -112,6 +113,18 @@ limitations under the License.
     console.log('Notification permission granted.');
     // TODO(developer): Retrieve an Instance ID token for use with FCM.
     // ...
+
+    messaging.getToken().then((currentToken) => {
+
+    console.log("currnt token "+currentToken);
+  
+}).catch((err) => {
+  console.log('An error occurred while retrieving token. ', err);
+  showToken('Error retrieving Instance ID token. ', err);
+  setTokenSentToServer(false);
+});
+
+
   } else {
     console.log('Unable to get permission to notify.');
   }
