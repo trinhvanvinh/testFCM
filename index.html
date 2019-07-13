@@ -25,10 +25,37 @@ limitations under the License.
   <link rel="stylesheet" href="main.css">
 
   <link rel="manifest" href="manifest.json">
+
+      <!-- Mobiscroll JS and CSS Includes -->
+      <link rel="stylesheet" href="mobiscroll.javascript.min.css">
+      <script src="mobiscroll.javascript.min.js"></script>
 </head>
 <body>
 
     <input id="date" type="date" >
+
+
+<div mbsc-page class="demo-mobile-desktop-usage">
+  <div mbsc-form>
+      <div class="mbsc-grid mbsc-form-grid">
+          <div class="mbsc-row">
+              <div class="mbsc-col-sm-12 mbsc-col-md-6">
+                  <label>
+                      Mobile
+                      <input id="demo-mobile" data-input-style="box" placeholder="Please Select..." />
+                  </label>
+              </div>
+              <!-- <div class="mbsc-col-sm-12 mbsc-col-md-6">
+                  <label>
+                      Desktop
+                      <input id="demo-desktop" data-input-style="box" placeholder="Please Select..." />
+                  </label>
+              </div> -->
+          </div>
+      </div>
+  </div>
+</div>
+
 
 <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
@@ -78,7 +105,6 @@ limitations under the License.
 <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-messaging.js"></script>
-
 
 
 
@@ -308,6 +334,22 @@ messaging.onTokenRefresh(() => {
     showHideDiv(permissionDivId, true);
   }
   resetUI();
+
+
+  mobiscroll.settings = {
+      lang: 'en',         // Specify language like: lang: 'pl' or omit setting to use default
+      theme: 'ios'        // Specify theme like: theme: 'ios' or omit setting to use default
+  };
+  
+  mobiscroll.date('#demo-mobile', {
+      display: 'bubble'   // Specify display mode like: display: 'bottom' or omit setting to use default
+  });
+  
+  mobiscroll.date('#demo-desktop', {
+      display: 'bubble',  // Specify display mode like: display: 'bottom' or omit setting to use default
+      touchUi: false      // More info about touchUi: https://docs.mobiscroll.com/4-7-3/javascript/datetime#opt-touchUi
+  });
+
 </script>
 </body>
 </html>
